@@ -20,6 +20,6 @@ spec:
     spec:
       containers:
         - name: client
-          image: josphatn/yolo_client:1.0.0
+          image: josphatn/yolo_client:1.0.1
           ports:
             - containerPort: 3000
