@@ -1,0 +1,25 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb-deployment
+  labels:
+     app: yolomy-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: mongodb-pod
+      app: yolomy-app
+  template:
+    metadata:
+      name: mongodb-pod
+      labels:
+        name: mongodb-pod
+        app: yolomy-app
+    spec:
+      containers:
+        - name: client
+          image: mongo:4.0
+          ports:
+            - containerPort: 27017
