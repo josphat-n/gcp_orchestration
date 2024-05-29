@@ -4,12 +4,12 @@ kind: Service
 metadata:
   name: backend
   labels:
-    name: backend_service
-    app: yolomy_app
+    name: backend-service
+    app: yolomy-app
 spec:
   ports:
     - port: 5000
       targetPort: 5000
   selector:
-    name: yolo_backend_pod
-    app: yolomy_app
+    name: yolo-backend-pod
+    app: yolomy-app
