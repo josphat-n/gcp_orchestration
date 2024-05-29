@@ -1,0 +1,25 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: yolo-client-deployment
+  labels:
+    app: yolomy-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: yolo-client-pod
+      app: yolomy-app
+  template:
+    metadata:
+      name: yolo-client-pod
+      labels:
+        name: yolo-client-pod
+        app: yolomy-app
+    spec:
+      containers:
+        - name: client
+          image: josphatn/yolo_client:1.0.0
+          ports:
+            - containerPort: 3000
