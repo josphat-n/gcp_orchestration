@@ -2,9 +2,9 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: mongodb-StatefulSet
+  name: mongodb
 spec:
-  serviceName: "mongodb"
+  serviceName: mongodb
   replicas: 1
   selector:
     matchLabels:
@@ -12,7 +12,6 @@ spec:
       app: yolomy-app
   template:
     metadata:
-      name: mongodb-pod
       labels:
         name: mongodb-pod
         app: yolomy-app
@@ -23,14 +22,14 @@ spec:
           ports:
             - containerPort: 27017
           volumeMounts:
-            - name: mongo-data
+            - name: mongodb-data
               mountPath: /data/db
   volumeClaimTemplates:
     - metadata:
-        name: mongo-data
+        name: mongodb-data
       spec:
         accessModes: [ "ReadWriteOnce" ]
-        storageClassName: "mongodb-storage"
+        storageClassName: yolodb
         resources:
           requests:
-            storage: 200Mi
+            storage: 30Gi
